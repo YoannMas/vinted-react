@@ -3,7 +3,6 @@ import photoTest from "../assets/img/aboutme.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Product = ({ data }) => {
-  console.log(data);
   return (
     <div className="product">
       <div className="user-infos">
