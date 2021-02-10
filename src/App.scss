@@ -1,0 +1,138 @@
+// VARIABLES
+$vintedColor: #0cb0ba;
+
+// GLOBAL RULES
+
+.App {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 1240px;
+  margin: 0 auto;
+}
+
+// HEADER
+
+.header {
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(235, 230, 230);
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      width: 80px;
+    }
+    input {
+      height: 35px;
+      width: 600px;
+      border: none;
+      outline: none;
+      background-color: #f5f6f7;
+      border-radius: 5px;
+      padding-left: 20px;
+    }
+    button {
+      height: 30px;
+      width: 130px;
+      border-radius: 5px;
+      outline: none;
+    }
+    .buttons {
+      button {
+        border: 1px solid $vintedColor;
+        color: $vintedColor;
+        background-color: #fff;
+        margin-right: 10px;
+        &:hover {
+          cursor: pointer;
+          background-color: $vintedColor;
+          color: #fff;
+        }
+      }
+    }
+    button[name="selling"] {
+      background-color: #0cb0ba;
+      border: none;
+      color: #fff;
+      &:hover {
+        background-color: #fff;
+        color: $vintedColor;
+        cursor: pointer;
+        border: 1px solid $vintedColor;
+      }
+    }
+  }
+}
+
+// HOME
+
+// Global
+
+.home {
+  img {
+    width: 100vw;
+    height: 475px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+// Products
+
+.products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  img {
+    height: 335px;
+    width: 230px;
+    object-fit: cover;
+    object-position: center;
+  }
+  .user-infos {
+    display: flex;
+    margin: 5px 0 10px 0;
+    padding-left: 10px;
+    align-items: center;
+    .profil-picture {
+      height: 25px;
+      width: 25px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    span {
+      color: grey;
+      font-size: 12px;
+      text-decoration: none;
+    }
+  }
+  .product-infos {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-top: 6px;
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+    span {
+      font-size: 14px;
+      margin: 2px 0;
+    }
+    span:not(:nth-child(1)) {
+      font-size: 12px;
+      color: grey;
+    }
+  }
+}
