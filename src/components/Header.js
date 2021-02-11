@@ -1,7 +1,7 @@
 import logo from "../assets/img/Vinted_logo.png";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ userToken, setUser }) => {
   return (
     <div className="header">
       <div className="container">
@@ -9,14 +9,26 @@ const Header = () => {
           <img src={logo} alt="Vinted's logo" />
         </Link>
         <input type="text" name="search" placeholder="Recherche des articles"></input>
-        <div className="buttons">
-          <Link className="button" to="/Signup" name="signup">
-            S'inscrire
-          </Link>
-          <Link className="button" to="/Login" name="login">
-            Se connecter
-          </Link>
-        </div>
+        {!userToken ? (
+          <div className="buttons">
+            <Link className="button" to="/Signup" name="signup">
+              S'inscrire
+            </Link>
+            <Link className="button" to="/Login" name="login">
+              Se connecter
+            </Link>
+          </div>
+        ) : (
+          <button
+            className="button logoff"
+            onClick={() => {
+              setUser(null);
+            }}
+          >
+            Se déconnecter
+          </button>
+        )}
+
         <Link className="button" name="selling">
           Vends tes articles
         </Link>

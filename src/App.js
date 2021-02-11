@@ -14,15 +14,20 @@ library.add(faHeart);
 function App() {
   const [userToken, setUserToken] = useState();
   const setUser = (token) => {
-    Cookies.set("userToken", token, { expires: 7 });
-    setUserToken(token);
+    if (token) {
+      Cookies.set("userToken", token, { expires: 7 });
+      setUserToken(token);
+    } else {
+      Cookies.remove("userToken");
+      setUserToken(null);
+    }
   };
   console.log(userToken);
 
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header userToken={userToken} setUser={setUser} />
         <Switch>
           <Route path="/Offer/:id">
             <Offer />

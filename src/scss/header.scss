@@ -42,12 +42,24 @@
         }
       }
     }
+    .logoff {
+      background-color: #c2175b;
+      border: 1px solid #c2175b;
+      color: #fff;
+      font-family: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      &:hover {
+        background-color: #aa1350;
+      }
+    }
     a[name="selling"] {
       background-color: #0cb0ba;
       color: #fff;
       &:hover {
-        background-color: #fff;
-        color: $vintedColor;
+        background-color: #10979e;
+        border: 1px solid #10979e;
+        color: #fff;
         cursor: pointer;
       }
     }
