@@ -6,6 +6,7 @@ import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Header from "./components/Header";
 import Signup from "./containers/Signup";
+import Login from "./containers/Login";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
@@ -13,10 +14,10 @@ library.add(faHeart);
 function App() {
   const [userToken, setUserToken] = useState();
   const setUser = (token) => {
-    console.log(token);
     Cookies.set("userToken", token, { expires: 7 });
     setUserToken(token);
   };
+  console.log(userToken);
 
   return (
     <div className="App">
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/Signup">
             <Signup setUser={setUser} />
+          </Route>
+          <Route path="/Login">
+            <Login setUser={setUser} />
           </Route>
           <Route path="/">
             <Home />

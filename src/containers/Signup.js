@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -23,7 +23,7 @@ const Signup = ({ setUser }) => {
   };
 
   return (
-    <div className="signup">
+    <div className="signup-login">
       <h2>S'inscrire</h2>
       <form onSubmit={handleSubmit}>
         <input
