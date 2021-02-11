@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Signup = () => {
   return (
     <div className="signup">
@@ -9,13 +11,13 @@ const Signup = () => {
         <div className="newsletter">
           <input type="checkbox" name="newsletter" />
           <label>S'inscrire à notre newsletter</label>
-          <p>
-            En m'inscrivant je confirme avoir lu et accepté les Termes & Conditions et Politique de Confidentialité de Vinted. Je confirme
-            avoir au moins 18 ans.
-          </p>
         </div>
+        <p>
+          En m'inscrivant je confirme avoir lu et accepté les Termes & Conditions et Politique de Confidentialité de Vinted. Je confirme
+          avoir au moins 18 ans.
+        </p>
         <button type="submit">S'inscrire</button>
-        <span>Tu as déjà un compte ? Connecte-toi !</span>
+        <Link>Tu as déjà un compte ? Connecte-toi !</Link>
       </form>
     </div>
   );

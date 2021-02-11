@@ -1,0 +1,70 @@
+.signup {
+  width: 270px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  input:not([type="checkbox"]) {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    border: none;
+    color: rgb(128, 126, 126);
+    border-bottom: 1px solid rgba(255, 192, 203, 0.452);
+    outline: none;
+    &::placeholder {
+      color: rgba(128, 128, 128, 0.507);
+    }
+  }
+  .newsletter {
+    margin: 30px 0 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    input[type="checkbox"] {
+      height: 20px;
+      width: 20px;
+      margin: 0;
+    }
+    label {
+      font-size: 14px;
+      color: rgb(54, 53, 53);
+    }
+  }
+  p {
+    text-align: justify;
+    font-size: 10px;
+    color: rgb(134, 130, 130);
+    padding: 0 15px;
+    line-height: 13px;
+  }
+  button {
+    margin: 30px 0 15px 0;
+    width: 100%;
+    height: 35px;
+    background-color: $vintedColor;
+    color: #fff;
+    font-family: inherit;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #fff;
+      border: 1px solid $vintedColor;
+      color: $vintedColor;
+    }
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    color: $vintedColor;
+    font-size: 10px;
+    text-decoration: none;
+  }
+}
