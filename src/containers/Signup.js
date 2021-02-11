@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-const Signup = () => {
+const Signup = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [data, setData] = useState({});
+  const history = useHistory();
 
   const fetchData = async () => {
     const response = await axios.post("https://vinted-reacteur.herokuapp.com/user/signup", {
@@ -16,24 +18,30 @@ const Signup = () => {
       phone: phone,
       password: password,
     });
-    setData(response.data);
+    const dataTemp = await response.data;
+    setData(dataTemp);
   };
 
-  console.log(data);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetchData();
+    const token = data;
+    console.log(token);
+    setUser(token);
+
+    // history.push("/");
+  };
 
   useEffect(() => {
-    fetchData();
+    {
+      username && fetchData();
+    }
   }, []);
 
   return (
     <div className="signup">
       <h2>S'inscrire</h2>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          fetchData();
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={username}
@@ -75,7 +83,7 @@ const Signup = () => {
           avoir au moins 18 ans.
         </p>
         <button type="submit">S'inscrire</button>
-        <Link>Tu as déjà un compte ? Connecte-toi !</Link>
+        <Link to="/Login">Tu as déjà un compte ? Connecte-toi !</Link>
       </form>
     </div>
   );

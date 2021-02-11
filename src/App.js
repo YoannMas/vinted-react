@@ -1,5 +1,7 @@
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useState } from "react";
+import Cookies from "js-cookie";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Header from "./components/Header";
@@ -9,6 +11,13 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
 
 function App() {
+  const [userToken, setUserToken] = useState();
+  const setUser = (token) => {
+    console.log(token);
+    Cookies.set("userToken", token, { expires: 7 });
+    setUserToken(token);
+  };
+
   return (
     <div className="App">
       <Router>
@@ -18,7 +27,7 @@ function App() {
             <Offer />
           </Route>
           <Route path="/Signup">
-            <Signup />
+            <Signup setUser={setUser} />
           </Route>
           <Route path="/">
             <Home />
