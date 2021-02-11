@@ -10,10 +10,10 @@ const Header = () => {
         </Link>
         <input type="text" name="search" placeholder="Recherche des articles"></input>
         <div className="buttons">
-          <Link className="button" name="signup">
+          <Link className="button" to="/Signup" name="signup">
             S'inscrire
           </Link>
-          <Link className="button" to="/Signup" name="login">
+          <Link className="button" to="/Login" name="login">
             Se connecter
           </Link>
         </div>
