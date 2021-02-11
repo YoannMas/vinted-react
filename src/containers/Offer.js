@@ -32,15 +32,15 @@ const Offer = () => {
               return <ProductDetails data={el} key={index} />;
             })}
           </div>
-          <div>
-            <span>{data.product_name}</span>
+          <div className="other-infos">
+            <h5>{data.product_name}</h5>
             <span>{data.product_description}</span>
             <div>
               <img src={photoTest} alt="Profil picture" />
-              <span>YoannDev</span>
+              <span>{data.owner.account.username}</span>
               {/* To modidy when heroku will be update */}
-              <button>Acheter</button>
             </div>
+            <button>Acheter</button>
           </div>
         </div>
       </div>

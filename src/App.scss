@@ -169,21 +169,63 @@ $vintedColor: #0cb0ba;
         font-weight: 600;
         margin-bottom: 30px;
       }
-      img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: top;
-      }
       .product-details {
+        padding-bottom: 50px;
+        border-bottom: 1px solid #eaedee;
         div {
           display: flex;
+          margin-bottom: 10px;
           span:nth-child(1) {
             color: grey;
             font-size: 16px;
             margin-right: 15px;
           }
+          span:nth-child(2) {
+            // to modify for responsive
+            position: absolute;
+            left: 1100px;
+          }
+        }
+      }
+      .other-infos {
+        margin-top: 50px;
+        h5 {
+          font-weight: 700;
+          font-size: 18px;
+          margin-bottom: 20px;
+        }
+        span {
+          color: grey;
+        }
+        div {
+          display: flex;
+          align-items: center;
+          padding: 20px 0;
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+            margin-right: 15px;
+          }
+        }
+      }
+      button {
+        width: 100%;
+        margin-top: 50px;
+        height: 35px;
+        border: none;
+        outline: none;
+        background-color: $vintedColor;
+        color: #fff;
+        font-family: inherit;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          border: 1px solid $vintedColor;
+          color: $vintedColor;
+          background-color: #fff;
         }
       }
     }
