@@ -8,35 +8,19 @@ const Signup = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState({});
   const history = useHistory();
 
-  const fetchData = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const response = await axios.post("https://vinted-reacteur.herokuapp.com/user/signup", {
       username: username,
       email: email,
       phone: phone,
       password: password,
     });
-    const dataTemp = await response.data;
-    setData(dataTemp);
+    setUser(response.data.token);
+    history.push("/");
   };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetchData();
-    const token = data;
-    console.log(token);
-    setUser(token);
-
-    // history.push("/");
-  };
-
-  useEffect(() => {
-    {
-      username && fetchData();
-    }
-  }, []);
 
   return (
     <div className="signup">
