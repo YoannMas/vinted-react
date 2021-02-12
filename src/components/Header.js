@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Switch, withStyles } from "@material-ui/core";
 import { useState } from "react";
 
-const Header = ({ userToken, setUser, setSearch, search, price, setPrice }) => {
+const Header = ({ userToken, setUser, setSearch, search, setPrice }) => {
   const history = useHistory();
   const [checked, setChecked] = useState(false);
   const toggleChecked = () => {

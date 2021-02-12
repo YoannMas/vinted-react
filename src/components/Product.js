@@ -6,11 +6,11 @@ const Product = ({ data }) => {
   return (
     <div className="product">
       <div className="user-infos">
-        <img className="profil-picture" src={photoTest} alt="Profil picture" />
+        <img className="profil-picture" src={photoTest} alt="User's avatar" />
         <span>{data.owner.account.username}</span>
       </div>
       <Link to={`/Offer/${data._id}`}>
-        <img src={data.product_image.secure_url} alt={`Picture of ${data.product_name}`} />
+        <img src={data.product_image.secure_url} alt={`${data.product_name}`} />
       </Link>
       <div className="product-infos">
         <div>

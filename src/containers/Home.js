@@ -33,7 +33,7 @@ const Home = ({ search, price }) => {
   ) : (
     <div className="home">
       <div className="hero">
-        <img src={hero} alt="Picture of someone buying clothes" />
+        <img src={hero} alt="Someone buying clothes" />
         <div className="hero-box">
           <h3>Prêts à faire du tri dans vos placard ?</h3>
           <Link to="#">Commencer à vendre</Link>

@@ -36,7 +36,7 @@ const Offer = () => {
             <h5>{data.product_name}</h5>
             <span>{data.product_description}</span>
             <div>
-              <img src={photoTest} alt="Profil picture" />
+              <img src={photoTest} alt="User's avatar" />
               <span>{data.owner.account.username}</span>
             </div>
             <button>Acheter</button>
