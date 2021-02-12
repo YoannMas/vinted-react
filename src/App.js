@@ -13,6 +13,7 @@ library.add(faHeart);
 
 function App() {
   const [search, setSearch] = useState("");
+  const [price, setPrice] = useState(true);
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const setUser = (token) => {
     if (token) {
@@ -27,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header userToken={userToken} setUser={setUser} setSearch={setSearch} search={search} />
+        <Header userToken={userToken} setUser={setUser} setSearch={setSearch} search={search} setPrice={setPrice} price={price} />
         <Switch>
           <Route path="/Offer/:id">
             <Offer />
@@ -39,7 +40,7 @@ function App() {
             <Login setUser={setUser} />
           </Route>
           <Route path="/">
-            <Home search={search} />
+            <Home search={search} price={price} />
           </Route>
         </Switch>
       </Router>

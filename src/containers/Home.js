@@ -4,24 +4,29 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Home = ({ search }) => {
+const Home = ({ search, price }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+  let sort = "price-asc";
 
+  if (!price) {
+    sort = "price-desc";
+  }
+  console.log(sort);
   const numPages = Math.ceil(data.number / limit); // count the number of pages, adding buttons with pages number
   console.log(search);
 
   const fetchData = async () => {
-    const response = await axios.get(`https://vinted-reacteur.herokuapp.com/offers?page=${page}&title=${search}`);
+    const response = await axios.get(`https://vinted-reacteur.herokuapp.com/offers?page=${page}&title=${search}&sort=${sort}`);
     setData(response.data);
     setIsLoading(false);
   };
 
   useEffect(() => {
     fetchData();
-  }, [page, search]);
+  }, [page, search, sort]);
 
   return isLoading ? (
     <span>En cours de chargement</span>

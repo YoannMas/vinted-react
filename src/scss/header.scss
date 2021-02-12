@@ -1,5 +1,5 @@
 .header {
-  padding: 10px 0;
+  padding: 10px 0 0 0;
   border-bottom: 1px solid rgb(235, 230, 230);
   div {
     display: flex;
@@ -7,15 +7,6 @@
     align-items: center;
     img {
       width: 80px;
-    }
-    input {
-      height: 35px;
-      width: 600px;
-      border: none;
-      outline: none;
-      background-color: #f5f6f7;
-      border-radius: 5px;
-      padding-left: 20px;
     }
     .button {
       height: 30px;
@@ -54,7 +45,7 @@
       }
     }
     a[name="selling"] {
-      background-color: #0cb0ba;
+      background-color: $vintedColor;
       color: #fff;
       &:hover {
         background-color: $vintedColorHovered;
@@ -63,5 +54,24 @@
         cursor: pointer;
       }
     }
+  }
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  input {
+    height: 35px;
+    width: 600px;
+    border: none;
+    outline: none;
+    background-color: #f5f6f7;
+    border-radius: 5px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+  div {
+    display: flex;
+    align-items: center;
   }
 }
