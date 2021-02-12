@@ -1,7 +1,9 @@
 import logo from "../assets/img/Vinted_logo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Header = ({ userToken, setUser }) => {
+  const history = useHistory();
+
   return (
     <div className="header">
       <div className="container">
@@ -23,6 +25,7 @@ const Header = ({ userToken, setUser }) => {
             className="button logoff"
             onClick={() => {
               setUser(null);
+              history.push("/");
             }}
           >
             Se déconnecter

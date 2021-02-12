@@ -38,7 +38,6 @@ const Offer = () => {
             <div>
               <img src={photoTest} alt="Profil picture" />
               <span>{data.owner.account.username}</span>
-              {/* To modidy when heroku will be update */}
             </div>
             <button>Acheter</button>
           </div>

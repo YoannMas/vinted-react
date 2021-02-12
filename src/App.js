@@ -12,7 +12,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
 
 function App() {
-  const [userToken, setUserToken] = useState();
+  const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const setUser = (token) => {
     if (token) {
       Cookies.set("userToken", token, { expires: 7 });
