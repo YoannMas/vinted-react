@@ -1,8 +1,43 @@
 .home {
-    img {
-      width: 100vw;
-      height: 475px;
-      object-fit: cover;
-      object-position: center;
+  img {
+    width: 100vw;
+    height: 515px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.hero-box {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 2;
+  background-color: #fff;
+  top: 180px;
+  left: 100px;
+  width: 400px;
+  height: 260px;
+  border-radius: 5px;
+  padding: 50px 30px;
+  h3 {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 40px;
+    margin-bottom: 50px;
+  }
+  a {
+    text-decoration: none;
+    background-color: $vintedColor;
+    color: #fff;
+    padding: 12px;
+    border-radius: 5px;
+    &:hover {
+      background-color: $vintedColorHovered;
     }
   }
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}

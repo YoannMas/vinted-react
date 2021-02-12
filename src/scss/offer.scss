@@ -11,9 +11,8 @@
     img {
       height: 600px;
       width: 400px;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
-      background-color: #fff;
     }
     .offer-infos {
       box-sizing: border-box;
@@ -82,9 +81,8 @@
         border-radius: 5px;
         cursor: pointer;
         &:hover {
-          border: 1px solid $vintedColor;
-          color: $vintedColor;
-          background-color: #fff;
+          border: 1px solid $vintedColorHovered;
+          background-color: $vintedColorHovered;
         }
       }
     }

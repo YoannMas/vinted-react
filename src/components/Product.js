@@ -14,7 +14,7 @@ const Product = ({ data }) => {
       </Link>
       <div className="product-infos">
         <div>
-          <span>{data.product_price} €</span>
+          <span>{data.product_price.toFixed(2)} €</span>
           <span>{data.product_details[1].TAILLE}</span>
           <span>{data.product_details[0].MARQUE}</span>
         </div>

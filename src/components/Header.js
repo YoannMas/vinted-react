@@ -1,7 +1,7 @@
 import logo from "../assets/img/Vinted_logo.png";
 import { Link, useHistory } from "react-router-dom";
 
-const Header = ({ userToken, setUser }) => {
+const Header = ({ userToken, setUser, setSearch, search }) => {
   const history = useHistory();
 
   return (
@@ -10,7 +10,14 @@ const Header = ({ userToken, setUser }) => {
         <Link to="/">
           <img src={logo} alt="Vinted's logo" />
         </Link>
-        <input type="text" name="search" placeholder="Recherche des articles"></input>
+        <input
+          type="text"
+          value={search}
+          placeholder="Recherche des articles"
+          onChange={(event) => {
+            setSearch(event.target.value);
+          }}
+        ></input>
         {!userToken ? (
           <div className="buttons">
             <Link className="button" to="/Signup" name="signup">

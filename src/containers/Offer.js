@@ -26,7 +26,7 @@ const Offer = () => {
       <div className="wrapper-offer">
         <img src={data.product_image.secure_url} alt="" />
         <div className="offer-infos">
-          <h4>{data.product_price} €</h4>
+          <h4>{data.product_price.toFixed(2)} €</h4>
           <div className="product-details">
             {data.product_details.map((el, index) => {
               return <ProductDetails data={el} key={index} />;

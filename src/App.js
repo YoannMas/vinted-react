@@ -12,6 +12,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
 
 function App() {
+  const [search, setSearch] = useState("");
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const setUser = (token) => {
     if (token) {
@@ -22,12 +23,11 @@ function App() {
       setUserToken(null);
     }
   };
-  console.log(userToken);
 
   return (
     <div className="App">
       <Router>
-        <Header userToken={userToken} setUser={setUser} />
+        <Header userToken={userToken} setUser={setUser} setSearch={setSearch} search={search} />
         <Switch>
           <Route path="/Offer/:id">
             <Offer />
@@ -39,7 +39,7 @@ function App() {
             <Login setUser={setUser} />
           </Route>
           <Route path="/">
-            <Home />
+            <Home search={search} />
           </Route>
         </Switch>
       </Router>
