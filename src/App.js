@@ -5,10 +5,8 @@ import Cookies from "js-cookie";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Header from "./components/Header";
-import Signup from "./containers/Signup";
-import Login from "./containers/Login";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faHeart, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
 
 function App() {
@@ -43,12 +41,6 @@ function App() {
         <Switch>
           <Route path="/Offer/:id">
             <Offer />
-          </Route>
-          <Route path="/Signup">
-            <Signup setUser={setUser} />
-          </Route>
-          <Route path="/Login">
-            <Login setUser={setUser} />
           </Route>
           <Route path="/">
             <Home search={search} price={price} range={range} />

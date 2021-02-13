@@ -10,14 +10,14 @@ const Home = ({ search, price, range }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  // const [limit, setLimit] = useState(10);
   let sort = "price-asc";
 
   if (!price) {
     sort = "price-desc";
   }
   console.log(sort);
-  const numPages = Math.ceil(data.number / limit); // count the number of pages, adding buttons with pages number
+  // const numPages = Math.ceil(data.number / limit); // count the number of pages, adding buttons with pages number
   console.log(search);
 
   const fetchData = async () => {

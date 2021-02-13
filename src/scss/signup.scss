@@ -1,13 +1,32 @@
+.modals {
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(110, 103, 103, 0.747);
+  z-index: 9990;
+}
+
 .signup-login {
-  width: 270px;
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 350px;
   margin: 50px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px 40px 40px 40px;
+  border-radius: 5px;
+  span {
+    align-self: flex-end;
+    margin-top: 20px;
+    color: rgb(192, 192, 192);
+    cursor: pointer;
+  }
   h2 {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin: 10px 0 30px 0;
   }
   input:not([type="checkbox"]) {
     width: 100%;
@@ -67,5 +86,6 @@
     color: $vintedColor;
     font-size: 10px;
     text-decoration: none;
+    cursor: pointer;
   }
 }

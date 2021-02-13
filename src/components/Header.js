@@ -2,12 +2,19 @@ import logo from "../assets/img/Vinted_logo.png";
 import { Link, useHistory } from "react-router-dom";
 import PriceSwitch from "./PriceSwitch";
 import PriceRange from "./PriceRange";
+import Signup from "../components/Signup";
+import Login from "../components/Login";
+import { useState } from "react";
 
 const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRange }) => {
   const history = useHistory();
+  const [signupModal, setSignupModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
   return (
     <div className="header">
+      {signupModal && <Signup setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} />}
+      {loginModal && <Login setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} />}
       <div className="container">
         <Link to="/">
           <img src={logo} alt="Vinted's logo" />
@@ -28,12 +35,24 @@ const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRan
         </div>
         {!userToken ? (
           <div className="buttons">
-            <Link className="button" to="/Signup" name="signup">
+            <button
+              className="button"
+              name="signup"
+              onClick={() => {
+                setSignupModal((signupModal) => !signupModal);
+              }}
+            >
               S'inscrire
-            </Link>
-            <Link className="button" to="/Login" name="login">
+            </button>
+            <button
+              className="button"
+              name="login"
+              onClick={() => {
+                setLoginModal((loginModal) => !loginModal);
+              }}
+            >
               Se connecter
-            </Link>
+            </button>
           </div>
         ) : (
           <button
