@@ -8,18 +8,27 @@ const Signup = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const response = await axios.post("https://vinted-reacteur.herokuapp.com/user/signup", {
-      username: username,
-      email: email,
-      phone: phone,
-      password: password,
-    });
-    setUser(response.data.token);
-    history.push("/");
+    try {
+      event.preventDefault();
+      const response = await axios.post("https://vinted-reacteur.herokuapp.com/user/signup", {
+        username: username,
+        email: email,
+        phone: phone,
+        password: password,
+      });
+      setUser(response.data.token);
+      history.push("/");
+    } catch (error) {
+      console.log(error.message);
+      setErrorMessage("There is something wrong, please try again");
+      if (error.response) {
+        console.log(error.response.message);
+      }
+    }
   };
 
   return (
@@ -67,6 +76,7 @@ const Signup = ({ setUser }) => {
           avoir au moins 18 ans.
         </p>
         <button type="submit">S'inscrire</button>
+        <span style={{ fontSize: 12, color: "red", display: "flex", justifyContent: "center", marginBottom: 10 }}>{errorMessage}</span>
         <Link to="/Login">Tu as déjà un compte ? Connecte-toi !</Link>
       </form>
     </div>

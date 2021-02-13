@@ -1,5 +1,4 @@
 import { makeStyles, Slider } from "@material-ui/core";
-import { useState } from "react";
 
 const PriceRange = ({ range, setRange }) => {
   const handleChange = (event, newValue) => {

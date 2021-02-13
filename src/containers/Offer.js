@@ -10,9 +10,16 @@ const Offer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const response = await axios.get(`https://vinted-reacteur.herokuapp.com/offer/${id}`);
-    setData(response.data);
-    setIsLoading(false);
+    try {
+      const response = await axios.get(`https://vinted-reacteur.herokuapp.com/offer/${id}`);
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+      if (error.response) {
+        console.log(error.response.message);
+      }
+    }
   };
 
   useEffect(() => {

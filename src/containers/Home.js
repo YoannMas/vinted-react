@@ -21,11 +21,18 @@ const Home = ({ search, price, range }) => {
   console.log(search);
 
   const fetchData = async () => {
-    const response = await axios.get(
-      `https://vinted-reacteur.herokuapp.com/offers?page=${page}&title=${search}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
-    );
-    setData(response.data);
-    setIsLoading(false);
+    try {
+      const response = await axios.get(
+        `https://vinted-reacteur.herokuapp.com/offers?page=${page}&title=${search}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
+      );
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+      if (error.response) {
+        console.log(error.response.message);
+      }
+    }
   };
 
   useEffect(() => {
