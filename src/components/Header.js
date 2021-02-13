@@ -1,27 +1,10 @@
 import logo from "../assets/img/Vinted_logo.png";
 import { Link, useHistory } from "react-router-dom";
-import { Switch, withStyles } from "@material-ui/core";
-import { useState } from "react";
+import PriceSwitch from "./PriceSwitch";
+import PriceRange from "./PriceRange";
 
-const Header = ({ userToken, setUser, setSearch, search, setPrice }) => {
+const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRange }) => {
   const history = useHistory();
-  const [checked, setChecked] = useState(false);
-  const toggleChecked = () => {
-    setChecked((checked) => !checked);
-  };
-  const PriceSwitch = withStyles({
-    switchBase: {
-      color: "#0cb0ba",
-      "&$checked": {
-        color: "#10979e",
-      },
-      "&$checked + $track": {
-        backgroundColor: "#10979e",
-      },
-    },
-    checked: {},
-    track: {},
-  })(Switch);
 
   return (
     <div className="header">
@@ -39,14 +22,8 @@ const Header = ({ userToken, setUser, setSearch, search, setPrice }) => {
             }}
           ></input>
           <div>
-            <span style={{ color: "grey", fontSize: 14 }}>Triez par prix :</span>
-            <PriceSwitch
-              checked={checked}
-              onChange={() => {
-                toggleChecked();
-                setPrice((price) => !price);
-              }}
-            ></PriceSwitch>
+            <PriceSwitch setPrice={setPrice} />
+            <PriceRange />
           </div>
         </div>
         {!userToken ? (

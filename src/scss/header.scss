@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: center;
     img {
-      width: 80px;
+      width: 100px;
     }
     .button {
       height: 30px;
@@ -71,7 +71,17 @@
     margin-bottom: 10px;
   }
   div {
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+  }
+  .switch {
+    width: 150px;
+  }
+  .range {
+    display: flex;
+    justify-content: space-around;
+    width: 390px;
   }
 }
