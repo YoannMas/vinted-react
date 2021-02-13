@@ -3,6 +3,8 @@ import hero from "../assets/img/Hero-picture.jpeg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const Home = ({ search, price, range }) => {
   const [data, setData] = useState({});
@@ -55,14 +57,16 @@ const Home = ({ search, price, range }) => {
             setPage(page - 1);
           }}
         >
-          -
+          <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: 20, marginRight: 20 }} />
+          Précedent
         </button>
         <button
           onClick={() => {
             setPage(page + 1);
           }}
         >
-          +
+          Suivant
+          <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 20, marginLeft: 20 }} />
         </button>
       </div>
     </div>

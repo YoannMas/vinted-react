@@ -6,6 +6,9 @@ const Product = ({ data }) => {
   return (
     <div className="product">
       <div className="user-infos">
+        {/* Prod */}
+        {/* {data.owner.account.avatar.secure_url && <img src={data.owner.account.avatar.secure_url} alt="User's avatar" />} */}
+        {/* Test */}
         <img className="profil-picture" src={photoTest} alt="User's avatar" />
         <span>{data.owner.account.username}</span>
       </div>

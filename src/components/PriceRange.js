@@ -14,6 +14,7 @@ const PriceRange = ({ range, setRange }) => {
   const classes = useStyles();
   return (
     <div className="range">
+      {/* To fix : minimum distance between the thumbs */}
       <span style={{ color: "grey", fontSize: 12 }}>Prix entre :</span>
       <Slider
         className={classes.root}

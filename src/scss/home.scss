@@ -40,4 +40,21 @@
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  button {
+    background-color: #fff;
+    border: none;
+    font-size: 14px;
+    color: $vintedColor;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    &:nth-child(1) {
+      margin-right: 50px;
+    }
+    &:hover {
+      color: $vintedColorHovered;
+    }
+  }
 }

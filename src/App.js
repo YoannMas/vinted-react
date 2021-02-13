@@ -8,13 +8,13 @@ import Header from "./components/Header";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
 
 function App() {
   const [search, setSearch] = useState("");
   const [price, setPrice] = useState(true);
-  const [range, setRange] = useState([10, 100]);
+  const [range, setRange] = useState([0, 100]);
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const setUser = (token) => {
     if (token) {
