@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Home = ({ search, price }) => {
+const Home = ({ search, price, range }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -19,14 +19,16 @@ const Home = ({ search, price }) => {
   console.log(search);
 
   const fetchData = async () => {
-    const response = await axios.get(`https://vinted-reacteur.herokuapp.com/offers?page=${page}&title=${search}&sort=${sort}`);
+    const response = await axios.get(
+      `https://vinted-reacteur.herokuapp.com/offers?page=${page}&title=${search}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
+    );
     setData(response.data);
     setIsLoading(false);
   };
 
   useEffect(() => {
     fetchData();
-  }, [page, search, sort]);
+  }, [page, search, sort, range]);
 
   return isLoading ? (
     <span>En cours de chargement</span>

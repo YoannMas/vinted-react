@@ -1,10 +1,9 @@
 import { makeStyles, Slider } from "@material-ui/core";
 import { useState } from "react";
 
-const PriceRange = () => {
-  const [value, setValue] = useState([20, 37]);
+const PriceRange = ({ range, setRange }) => {
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setRange(newValue);
   };
   const useStyles = makeStyles({
     root: {
@@ -21,7 +20,7 @@ const PriceRange = () => {
         min={0}
         max={500}
         step={5}
-        value={value}
+        value={range}
         onChange={handleChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"

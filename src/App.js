@@ -25,6 +25,7 @@ function App() {
       setUserToken(null);
     }
   };
+  console.log(range);
 
   return (
     <div className="App">
@@ -50,7 +51,7 @@ function App() {
             <Login setUser={setUser} />
           </Route>
           <Route path="/">
-            <Home search={search} price={price} />
+            <Home search={search} price={price} range={range} />
           </Route>
         </Switch>
       </Router>

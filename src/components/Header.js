@@ -23,7 +23,7 @@ const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRan
           ></input>
           <div>
             <PriceSwitch setPrice={setPrice} />
-            <PriceRange />
+            <PriceRange range={range} setRange={setRange} />
           </div>
         </div>
         {!userToken ? (
