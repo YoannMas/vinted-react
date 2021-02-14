@@ -1,8 +1,8 @@
 .products {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 235px);
+  justify-content: space-between;
 }
 
 .product {
