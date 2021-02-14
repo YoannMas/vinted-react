@@ -23,7 +23,7 @@ const Home = ({ search, price, range }) => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://vinted-reacteur.herokuapp.com/offers?page=${page}&title=${search}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
+        `https://vinted-reacteur.herokuapp.com/offers?page=${page}&title=${search}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&limit=${limit}`
       );
       setData(response.data);
       setIsLoading(false);
@@ -39,7 +39,7 @@ const Home = ({ search, price, range }) => {
 
   useEffect(() => {
     fetchData();
-  }, [page, search, sort, range]);
+  }, [page, search, sort, range, limit]);
 
   return isLoading ? (
     <span>En cours de chargement</span>
@@ -53,6 +53,18 @@ const Home = ({ search, price, range }) => {
         </div>
       </div>
       <div className="container">
+        <div className="select">
+          <span>Nombre de produits par page :</span>
+          <select
+            onChange={(event) => {
+              setLimit(Number(event.target.value));
+            }}
+          >
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+        </div>
         <div className="products">
           {data.offers.map((el) => {
             return <Product data={el} key={el._id} />;
