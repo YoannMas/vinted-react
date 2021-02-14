@@ -10,7 +10,7 @@ const Home = ({ search, price, range }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  // const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(10);
   let sort = "price-asc";
 
   if (!price) {
@@ -34,6 +34,8 @@ const Home = ({ search, price, range }) => {
       }
     }
   };
+
+  console.log(data);
 
   useEffect(() => {
     fetchData();
@@ -59,22 +61,30 @@ const Home = ({ search, price, range }) => {
       </div>
       <div className="pages">
         {/* to improve with number of page */}
-        <button
-          onClick={() => {
-            setPage(page - 1);
-          }}
-        >
-          <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: 20, marginRight: 20 }} />
-          Précedent
-        </button>
-        <button
-          onClick={() => {
-            setPage(page + 1);
-          }}
-        >
-          Suivant
-          <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 20, marginLeft: 20 }} />
-        </button>
+        {page > 1 ? (
+          <button
+            onClick={() => {
+              setPage(page - 1);
+            }}
+          >
+            <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: 20, marginRight: 20 }} />
+            Précedent
+          </button>
+        ) : (
+          <div className="first-hidden"></div>
+        )}
+        {data.offers.length < limit ? (
+          <div className="second-hidden"></div>
+        ) : (
+          <button
+            onClick={() => {
+              setPage(page + 1);
+            }}
+          >
+            Suivant
+            <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 20, marginLeft: 20 }} />
+          </button>
+        )}
       </div>
     </div>
   );

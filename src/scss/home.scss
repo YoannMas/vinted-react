@@ -41,6 +41,7 @@
   justify-content: center;
   margin-bottom: 30px;
   button {
+    box-sizing: border-box;
     background-color: #fff;
     border: none;
     font-size: 14px;
@@ -56,5 +57,11 @@
     &:hover {
       color: $vintedColorHovered;
     }
+  }
+  .first-hidden {
+    width: 158.33px;
+  }
+  .second-hidden {
+    width: 91.2px;
   }
 }
