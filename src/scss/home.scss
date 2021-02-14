@@ -1,9 +1,20 @@
 .home {
-  img {
-    width: 100vw;
-    height: 515px;
-    object-fit: cover;
-    object-position: center;
+  .hero {
+    display: flex;
+    img {
+      width: 100vw;
+      height: 515px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .overlay {
+      width: 50%;
+      height: 50px;
+      position: absolute;
+      z-index: 99;
+      top: 562px;
+      right: 0;
+    }
   }
 }
 
@@ -52,6 +63,7 @@
     color: grey;
     border: 1px solid grey;
     border-radius: 5px;
+    outline: none;
   }
 }
 

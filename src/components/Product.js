@@ -7,9 +7,13 @@ const Product = ({ data }) => {
     <div className="product">
       <div className="user-infos">
         {/* Prod */}
-        {/* {data.owner.account.avatar.secure_url && <img src={data.owner.account.avatar.secure_url} alt="User's avatar" />} */}
+        {data.owner.account.avatar ? (
+          <img className="profil-picture" src={data.owner.account.avatar.secure_url} alt="User's avatar" />
+        ) : (
+          <div className="userpic"></div>
+        )}
         {/* Test */}
-        <img className="profil-picture" src={photoTest} alt="User's avatar" />
+        {/* <img className="profil-picture" src={photoTest} alt="User's avatar" /> */}
         <span>{data.owner.account.username}</span>
       </div>
       <Link to={`/Offer/${data._id}`}>

@@ -14,6 +14,7 @@ function App() {
   const [price, setPrice] = useState(true);
   const [range, setRange] = useState([0, 100]);
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+  const [mainPage, setMainPage] = useState(true);
   const setUser = (token) => {
     if (token) {
       Cookies.set("userToken", token, { expires: 7 });
@@ -37,13 +38,14 @@ function App() {
           price={price}
           range={range}
           setRange={setRange}
+          mainPage={mainPage}
         />
         <Switch>
           <Route path="/Offer/:id">
-            <Offer />
+            <Offer setMainPage={setMainPage} />
           </Route>
           <Route path="/">
-            <Home search={search} price={price} range={range} />
+            <Home search={search} price={price} range={range} setMainPage={setMainPage} />
           </Route>
         </Switch>
       </Router>

@@ -6,7 +6,7 @@ import Signup from "../components/Signup";
 import Login from "../components/Login";
 import { useState } from "react";
 
-const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRange }) => {
+const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRange, mainPage }) => {
   const history = useHistory();
   const [signupModal, setSignupModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
@@ -28,10 +28,12 @@ const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRan
               setSearch(event.target.value);
             }}
           ></input>
-          <div>
-            <PriceSwitch setPrice={setPrice} />
-            <PriceRange range={range} setRange={setRange} />
-          </div>
+          {mainPage && (
+            <div>
+              <PriceSwitch setPrice={setPrice} />
+              <PriceRange range={range} setRange={setRange} />
+            </div>
+          )}
         </div>
         {!userToken ? (
           <div className="buttons">

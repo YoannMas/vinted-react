@@ -1,12 +1,13 @@
 import Product from "../components/Product";
 import hero from "../assets/img/Hero-picture.jpeg";
+import overlay from "../assets/img/overlay.svg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const Home = ({ search, price, range }) => {
+const Home = ({ search, price, range, setMainPage }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -27,6 +28,7 @@ const Home = ({ search, price, range }) => {
       );
       setData(response.data);
       setIsLoading(false);
+      setMainPage(true);
     } catch (error) {
       console.log(error.message);
       if (error.response) {
@@ -47,6 +49,7 @@ const Home = ({ search, price, range }) => {
     <div className="home">
       <div className="hero">
         <img src={hero} alt="Someone buying clothes" />
+        <img className="overlay" src={overlay} alt="overlay" />
         <div className="hero-box">
           <h3>Prêts à faire du tri dans vos placard ?</h3>
           <Link to="#">Commencer à vendre</Link>
