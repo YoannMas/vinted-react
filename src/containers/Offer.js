@@ -44,7 +44,11 @@ const Offer = ({ setMainPage }) => {
             <h5>{data.product_name}</h5>
             <span>{data.product_description}</span>
             <div>
-              <img src={photoTest} alt="User's avatar" />
+              {data.owner.account.avatar ? (
+                <img className="profil-picture" src={data.owner.account.avatar.secure_url} alt="User's avatar" />
+              ) : (
+                <div style={{ marginRight: 10 }} className="userpic"></div>
+              )}
               <span>{data.owner.account.username}</span>
             </div>
             <button>Acheter</button>
