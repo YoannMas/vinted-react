@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Login from "../components/Login";
 
-const Publish = ({ setMainPage }) => {
+const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, currentPage }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [file, setFile] = useState();
@@ -44,10 +44,20 @@ const Publish = ({ setMainPage }) => {
     }
   };
 
+  const checkLogin = () => {
+    if (!token) {
+      <Login setUser={setUser} setLoginModal={setLoginModal} setSignupModal={setSignupModal} currentPage={currentPage} />;
+      setLoginModal((loginModal) => !loginModal);
+    }
+  };
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
   return (
     <div className="publish">
-      {setMainPage(false)}
-      {!token && <Login />}
+      {setCurrentPage("Publish")}
       <div className="container">
         <h2>Vends ton article</h2>
         <form onSubmit={handleSubmit}>

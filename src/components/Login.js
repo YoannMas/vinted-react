@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const Login = ({ setUser, setLoginModal, setSignupModal }) => {
+const Login = ({ setUser, setLoginModal, setSignupModal, currentPage }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -19,7 +19,7 @@ const Login = ({ setUser, setLoginModal, setSignupModal }) => {
       });
       setUser(response.data.token);
       setLoginModal(false);
-      history.push("/");
+      history.push(`/${currentPage}`);
     } catch (error) {
       console.log(error.message);
       setErrorMessage("Username or password is invalid");

@@ -6,15 +6,26 @@ import Signup from "../components/Signup";
 import Login from "../components/Login";
 import { useState } from "react";
 
-const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRange, mainPage }) => {
+const Header = ({
+  userToken,
+  setUser,
+  setSearch,
+  search,
+  setPrice,
+  range,
+  setRange,
+  currentPage,
+  loginModal,
+  setLoginModal,
+  signupModal,
+  setSignupModal,
+}) => {
   const history = useHistory();
-  const [signupModal, setSignupModal] = useState(false);
-  const [loginModal, setLoginModal] = useState(false);
 
   return (
     <div className="header">
       {signupModal && <Signup setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} />}
-      {loginModal && <Login setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} />}
+      {loginModal && <Login setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} currentPage={currentPage} />}
       <div className="container">
         <Link to="/">
           <img src={logo} alt="Vinted's logo" />
@@ -28,7 +39,7 @@ const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRan
               setSearch(event.target.value);
             }}
           ></input>
-          {mainPage && (
+          {currentPage === "home" && (
             <div>
               <PriceSwitch setPrice={setPrice} />
               <PriceRange range={range} setRange={setRange} />

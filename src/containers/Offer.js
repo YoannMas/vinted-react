@@ -5,7 +5,7 @@ import ProductDetails from "../components/ProductDetails";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const Offer = ({ setMainPage }) => {
+const Offer = ({ setCurrentPage }) => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +15,7 @@ const Offer = ({ setMainPage }) => {
       const response = await axios.get(`https://vinted-reacteur.herokuapp.com/offer/${id}`);
       setData(response.data);
       setIsLoading(false);
-      setMainPage(false);
+      setCurrentPage(`Offer/${id}`);
     } catch (error) {
       console.log(error.message);
       if (error.response) {

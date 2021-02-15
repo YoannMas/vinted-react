@@ -7,7 +7,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const Home = ({ search, price, range, setMainPage }) => {
+const Home = ({ search, price, range, setCurrentPage }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -26,7 +26,7 @@ const Home = ({ search, price, range, setMainPage }) => {
       );
       setData(response.data);
       setIsLoading(false);
-      setMainPage(true);
+      setCurrentPage("Home");
     } catch (error) {
       console.log(error.message);
       if (error.response) {
