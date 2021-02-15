@@ -24,7 +24,6 @@ function App() {
       setUserToken(null);
     }
   };
-  console.log(range);
 
   return (
     <div className="App">

@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ProductDetails from "../components/ProductDetails";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Offer = ({ setMainPage }) => {
   const { id } = useParams();
@@ -26,12 +28,23 @@ const Offer = ({ setMainPage }) => {
     fetchData();
   }, [id]);
 
+  const responsive = {
+    allTypeOfScreen: {
+      breakpoint: { max: 4000, min: 0 },
+      items: 1,
+    },
+  };
+
   return isLoading ? (
     <span>Chargement en cours...</span>
   ) : (
     <div className="offer">
       <div className="wrapper-offer">
-        <img src={data.product_image.secure_url} alt="" />
+        <Carousel responsive={responsive}>
+          {data.product_pictures.map((el) => {
+            return <img src={el.secure_url} alt={data.product_name} />;
+          })}
+        </Carousel>
         <div className="offer-infos">
           <h4>{data.product_price.toFixed(2)} €</h4>
           <ul className="product-details">

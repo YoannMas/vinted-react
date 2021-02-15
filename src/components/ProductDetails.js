@@ -1,5 +1,4 @@
 const ProductDetails = ({ data }) => {
-  console.log(data);
   const keys = Object.keys(data);
   const values = Object.values(data);
   return (
