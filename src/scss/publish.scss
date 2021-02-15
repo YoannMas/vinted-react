@@ -6,7 +6,7 @@
     padding-top: 45px;
   }
   form {
-    > div:not(:last-child) {
+    > div:not(.button-div) {
       box-sizing: border-box;
       background-color: #fff;
       margin-bottom: 20px;
@@ -133,6 +133,39 @@
       margin: 30px 0 40px 0;
       cursor: pointer;
       outline: none;
+    }
+  }
+}
+
+.after-submit {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    width: 600px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 40px 0 60px 0;
+    }
+    a {
+      outline: none;
+      text-decoration: none;
+      background-color: $vintedColor;
+      padding: 10px;
+      color: #fff;
+      border-radius: 5px;
+      margin-bottom: 60px;
+      &:hover {
+        background-color: $vintedColorHovered;
+      }
     }
   }
 }

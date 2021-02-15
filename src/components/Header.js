@@ -4,7 +4,6 @@ import PriceSwitch from "./PriceSwitch";
 import PriceRange from "./PriceRange";
 import Signup from "../components/Signup";
 import Login from "../components/Login";
-import { useState } from "react";
 
 const Header = ({
   userToken,
