@@ -60,7 +60,7 @@ const Home = ({ search, price, range, setMainPage }) => {
           <span>Nombre de produits par page :</span>
           <select
             onChange={(event) => {
-              setLimit(Number(event.target.value));
+              setLimit(event.target.value);
             }}
           >
             <option value="10">10</option>

@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ProductDetails from "../components/ProductDetails";
-import photoTest from "../assets/img/aboutme.jpg";
 
 const Offer = ({ setMainPage }) => {
   const { id } = useParams();
