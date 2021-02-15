@@ -35,11 +35,11 @@ const Offer = ({ setMainPage }) => {
         <img src={data.product_image.secure_url} alt="" />
         <div className="offer-infos">
           <h4>{data.product_price.toFixed(2)} €</h4>
-          <div className="product-details">
+          <ul className="product-details">
             {data.product_details.map((el, index) => {
               return <ProductDetails data={el} key={index} />;
             })}
-          </div>
+          </ul>
           <div className="other-infos">
             <h5>{data.product_name}</h5>
             <span>{data.product_description}</span>
