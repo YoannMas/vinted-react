@@ -59,7 +59,9 @@ const Offer = ({ setMainPage }) => {
               {data.owner.account.avatar ? (
                 <img className="profil-picture" src={data.owner.account.avatar.secure_url} alt="User's avatar" />
               ) : (
-                <div style={{ marginRight: 10 }} className="userpic"></div>
+                <div style={{ marginRight: 10 }} className="userpic">
+                  <span style={{ color: "#fff", fontSize: 20 }}>{data.owner.account.username.substring(0, 1)}</span>
+                </div>
               )}
               <span>{data.owner.account.username}</span>
             </div>

@@ -8,7 +8,9 @@ const Product = ({ data }) => {
         {data.owner.account.avatar ? (
           <img className="profil-picture" src={data.owner.account.avatar.secure_url} alt="User's avatar" />
         ) : (
-          <div className="userpic"></div>
+          <div className="userpic">
+            <span style={{ color: "#fff", fontSize: 12 }}>{data.owner.account.username.substring(0, 1)}</span>
+          </div>
         )}
         <span>{data.owner.account.username}</span>
       </div>
