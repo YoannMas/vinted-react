@@ -17,7 +17,7 @@ function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const [signupModal, setSignupModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
-  const [currentPage, setCurrentPage] = useState("");
+  const [currentPage, setCurrentPage] = useState("Home");
   const setUser = (token) => {
     if (token) {
       Cookies.set("userToken", token, { expires: 7 });

@@ -38,7 +38,7 @@ const Header = ({
               setSearch(event.target.value);
             }}
           ></input>
-          {currentPage === "home" && (
+          {currentPage === "Home" && (
             <div>
               <PriceSwitch setPrice={setPrice} />
               <PriceRange range={range} setRange={setRange} />
