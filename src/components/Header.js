@@ -24,7 +24,7 @@ const Header = ({
 
   return (
     <div className="header">
-      {signupModal && <Signup setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} />}
+      {signupModal && <Signup setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} currentPage={currentPage} />}
       {loginModal && <Login setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} currentPage={currentPage} />}
       <div className="container">
         <Link to="/">

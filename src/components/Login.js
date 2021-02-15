@@ -34,7 +34,12 @@ const Login = ({ setUser, setLoginModal, setSignupModal, currentPage }) => {
       <div className="signup-login">
         <span
           onClick={() => {
-            setLoginModal(false);
+            if (currentPage === "Publish") {
+              history.push("/");
+              setLoginModal(false);
+            } else {
+              setLoginModal(false);
+            }
           }}
         >
           <FontAwesomeIcon icon={faTimes} />

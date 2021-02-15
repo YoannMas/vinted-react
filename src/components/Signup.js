@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const Signup = ({ setUser, setSignupModal, setLoginModal }) => {
+const Signup = ({ setUser, setSignupModal, setLoginModal, currentPage }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -38,7 +38,12 @@ const Signup = ({ setUser, setSignupModal, setLoginModal }) => {
       <div className="signup-login">
         <span
           onClick={() => {
-            setSignupModal(false);
+            if (currentPage === "Publish") {
+              history.push("/");
+              setSignupModal(false);
+            } else {
+              setSignupModal(false);
+            }
           }}
         >
           <FontAwesomeIcon icon={faTimes} />
