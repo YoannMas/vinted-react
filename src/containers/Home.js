@@ -17,9 +17,7 @@ const Home = ({ search, price, range, setMainPage }) => {
   if (!price) {
     sort = "price-desc";
   }
-  console.log(sort);
   // const numPages = Math.ceil(data.number / limit); // count the number of pages, adding buttons with pages number
-  console.log(search);
 
   const fetchData = async () => {
     try {
@@ -36,8 +34,6 @@ const Home = ({ search, price, range, setMainPage }) => {
       }
     }
   };
-
-  console.log(data);
 
   useEffect(() => {
     fetchData();

@@ -45,7 +45,7 @@ function App() {
             <Offer setMainPage={setMainPage} />
           </Route>
           <Route path="/Publish">
-            <Publish />
+            <Publish setMainPage={setMainPage} />
           </Route>
           <Route path="/">
             <Home search={search} price={price} range={range} setMainPage={setMainPage} />
