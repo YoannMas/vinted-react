@@ -68,7 +68,7 @@ const Header = ({ userToken, setUser, setSearch, search, setPrice, range, setRan
           </button>
         )}
 
-        <Link className="button" name="selling">
+        <Link to="/Publish" className="button" name="selling">
           Vends tes articles
         </Link>
       </div>

@@ -1,0 +1,134 @@
+.publish {
+  background-color: #eaedee;
+  h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    padding-top: 45px;
+  }
+  form {
+    > div:not(:last-child) {
+      box-sizing: border-box;
+      background-color: #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 2px grey;
+      > div {
+        box-sizing: border-box;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 25px;
+        border-bottom: 1px solid #eaedee;
+        input {
+          width: 50%;
+          height: 25px;
+          border: none;
+          border-bottom: 1px solid #eaedee;
+          outline: none;
+          font-family: inherit;
+          &::placeholder {
+            font-family: inherit;
+            color: #cbd2d4;
+            font-size: 16px;
+            font-weight: 400;
+          }
+          &:focus {
+            border-color: $vintedColor;
+          }
+        }
+        #description {
+          height: 100px;
+          border: none;
+          border-bottom: 1px solid #eaedee;
+          width: 50%;
+          resize: none;
+          font-size: 16px;
+          font-family: inherit;
+          outline: none;
+          &::placeholder {
+            align-self: flex-start;
+            color: #cbd2d4;
+          }
+          &:focus {
+            border-color: $vintedColor;
+          }
+        }
+      }
+    }
+    > div:nth-child(1) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 250px;
+      .dashed {
+        height: 200px;
+        width: 1190px;
+        border: 1px dashed #eaedee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        div {
+          border: 1px solid $vintedColor;
+          color: $vintedColor;
+          width: 200px;
+          height: 45px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 3px;
+          font-weight: 600;
+          span:nth-child(1) {
+            margin-right: 10px;
+            font-size: 16px;
+          }
+          span:nth-child(2) {
+            font-size: 16px;
+          }
+          label {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+          }
+        }
+        input {
+          display: none;
+        }
+      }
+    }
+    .price-checkbox {
+      width: 50%;
+      > input {
+        width: 100px;
+      }
+      div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 30px 0 10px 0;
+        input {
+          width: 20px;
+          height: 20px;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+  .button-div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    button {
+      width: 100px;
+      height: 45px;
+      background-color: $vintedColor;
+      border: none;
+      border-radius: 3px;
+      font-size: 18px;
+      color: #fff;
+      margin: 30px 0 40px 0;
+    }
+  }
+}

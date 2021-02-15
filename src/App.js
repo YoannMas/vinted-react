@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Header from "./components/Header";
+import Publish from "./containers/Publish";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
@@ -42,6 +43,9 @@ function App() {
         <Switch>
           <Route path="/Offer/:id">
             <Offer setMainPage={setMainPage} />
+          </Route>
+          <Route path="/Publish">
+            <Publish />
           </Route>
           <Route path="/">
             <Home search={search} price={price} range={range} setMainPage={setMainPage} />

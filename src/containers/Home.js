@@ -52,7 +52,7 @@ const Home = ({ search, price, range, setMainPage }) => {
         <img className="overlay" src={overlay} alt="overlay" />
         <div className="hero-box">
           <h3>Prêts à faire du tri dans vos placard ?</h3>
-          <Link to="#">Commencer à vendre</Link>
+          <Link to="/Publish">Commencer à vendre</Link>
         </div>
       </div>
       <div className="container">
