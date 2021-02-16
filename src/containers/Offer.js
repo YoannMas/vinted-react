@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ProductDetails from "../components/ProductDetails";
@@ -9,6 +9,7 @@ const Offer = ({ setCurrentPage }) => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const history = useHistory();
 
   const fetchData = async () => {
     try {
@@ -60,12 +61,18 @@ const Offer = ({ setCurrentPage }) => {
                 <img className="profil-picture" src={data.owner.account.avatar.secure_url} alt="User's avatar" />
               ) : (
                 <div style={{ marginRight: 10 }} className="userpic">
-                  <span style={{ color: "#fff", fontSize: 20 }}>{data.owner.account.username.substring(0, 1)}</span>
+                  <span style={{ color: "#fff", fontSize: 20 }}>{data.owner.account.username.substring(0, 1).toUpperCase()}</span>
                 </div>
               )}
               <span>{data.owner.account.username}</span>
             </div>
-            <button>Acheter</button>
+            <button
+              onClick={() => {
+                history.push("/Payment", { title: data.product_name, price: data.product_price });
+              }}
+            >
+              Acheter
+            </button>
           </div>
         </div>
       </div>

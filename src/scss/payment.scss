@@ -1,0 +1,63 @@
+.checkoutform {
+  background-color: #eaedee;
+  height: 100vh;
+  display: flex;
+  form {
+    box-sizing: border-box;
+    width: 600px;
+    height: 550px;
+    margin: 60px auto;
+    background-color: #fff;
+    border-radius: 6px;
+    h4 {
+      font-size: 14px;
+      margin: 30px 25px;
+      color: grey;
+    }
+    > div {
+      padding: 0 25px;
+      font-size: 16px;
+    }
+    .payment-infos {
+      color: #666;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #eaedee;
+      div {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+    }
+    .total {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #eaedee;
+      div {
+        display: flex;
+        justify-content: space-between;
+        padding: 60px 0;
+        font-weight: 600;
+      }
+      p {
+        padding-bottom: 30px;
+        line-height: 20px;
+      }
+    }
+    .stripe {
+      border-radius: 3px;
+      padding: 6px;
+      width: 90%;
+      margin: 20px auto;
+    }
+    button {
+      width: 100%;
+      height: 45px;
+      background-color: #04ba6a;
+      color: #fff;
+      font-family: inherit;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+    }
+  }
+}
