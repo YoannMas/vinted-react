@@ -38,8 +38,8 @@ const Signup = ({ setUser, setSignupModal, setLoginModal, currentPage }) => {
       <div className="signup-login">
         <span
           onClick={() => {
-            if (currentPage === "Publish") {
-              history.push("/");
+            if (currentPage === "Publish" || currentPage === "Payment") {
+              history.goBack();
               setSignupModal(false);
             } else {
               setSignupModal(false);

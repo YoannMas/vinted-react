@@ -4,12 +4,15 @@ import axios from "axios";
 import ProductDetails from "../components/ProductDetails";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Cookies from "js-cookie";
+import Login from "../components/Login";
 
-const Offer = ({ setCurrentPage }) => {
+const Offer = ({ setCurrentPage, loginModal, setLoginModal, setSignupModal, currentPage, setUser }) => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
+  const token = Cookies.get("userToken");
 
   const fetchData = async () => {
     try {
@@ -68,7 +71,12 @@ const Offer = ({ setCurrentPage }) => {
             </div>
             <button
               onClick={() => {
-                history.push("/Payment", { title: data.product_name, price: data.product_price });
+                if (token) {
+                  history.push("/Payment", { title: data.product_name, price: data.product_price });
+                } else {
+                  <Login setUser={setUser} setLoginModal={setLoginModal} setSignupModal={setSignupModal} currentPage={currentPage} />;
+                  setLoginModal((loginModal) => !loginModal);
+                }
               }}
             >
               Acheter

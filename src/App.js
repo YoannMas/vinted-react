@@ -49,7 +49,14 @@ function App() {
         />
         <Switch>
           <Route path="/Offer/:id">
-            <Offer setCurrentPage={setCurrentPage} />
+            <Offer
+              setUser={setUser}
+              setLoginModal={setLoginModal}
+              setSignupModal={setSignupModal}
+              loginModal={loginModal}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+            />
           </Route>
           <Route path="/Publish">
             <Publish
@@ -62,7 +69,7 @@ function App() {
             />
           </Route>
           <Route path="/Payment">
-            <Payment />
+            <Payment setCurrentPage={setCurrentPage} />
           </Route>
           <Route path="/">
             <Home search={search} price={price} range={range} setCurrentPage={setCurrentPage} />
