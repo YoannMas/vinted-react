@@ -1,31 +1,40 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 import axios from "axios";
 
-const CheckoutForm = ({ title, price, userId }) => {
-  const [succeded, setSucceded] = useState("");
+const CheckoutForm = ({ title, price, server }) => {
+  // Define if payment is succeed or not
+  const [succeeded, setSucceeded] = useState("");
   const stripe = useStripe();
   const elements = useElements();
+  // Varibles for fees, could be dynamic later
   const protectionFees = 0.4;
   const shippingFees = 0.8;
-  console.log(succeded);
+  const history = useHistory();
+  const token = Cookies.get("userToken");
+  console.log(token);
 
   const handleSubmit = async (event) => {
     try {
+      // Create the payment with Stripe and return data from backend
       event.preventDefault();
       const CardElements = elements.getElement(CardElement);
-      const stripeResponse = await stripe.createToken(CardElements, {
-        userId: userId,
-      });
+      const stripeResponse = await stripe.createToken(CardElements);
       const stripeToken = stripeResponse.token.id;
-      const response = await axios.post("https://vinted-reacteur.herokuapp.com/pay", {
+      const response = await axios.post(`${server}pay`, {
         price: price,
         title: title,
         stripeToken: stripeToken,
       });
       console.log(response);
       if (response.status === 200) {
-        setSucceded("Félicitation, paiement validé ! 🎉");
+        setSucceeded("Félicitation, paiement validé ! 🎉");
+        // If succeed, display a message (line. 78) and redirect user to home page after 3 secondes
+        setTimeout(() => {
+          history.push("/");
+        }, 3000);
       }
     } catch (error) {
       console.log(error.message);
@@ -66,6 +75,13 @@ const CheckoutForm = ({ title, price, userId }) => {
         <div className="button-pay-div">
           <button type="submit">Payer</button>
         </div>
+        {/* If succeed, display a message */}
+        {succeeded && (
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 15 }}>
+            <span style={{ marginBottom: 8 }}>{succeeded}</span>
+            <span style={{ color: "grey", fontSize: 12 }}>Redirection en cours...</span>
+          </div>
+        )}
       </form>
     </div>
   );

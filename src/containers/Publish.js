@@ -4,9 +4,10 @@ import Cookies from "js-cookie";
 import Login from "../components/Login";
 import { Link } from "react-router-dom";
 
-const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, currentPage }) => {
+const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, currentPage, server }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  // State for data to send to server
   const [file, setFile] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -16,8 +17,8 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
   const [condition, setCondition] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
-  const token = Cookies.get("userToken");
   const [preview, setPreview] = useState("");
+  const token = Cookies.get("userToken");
 
   const handleSubmit = async (event) => {
     try {
@@ -34,7 +35,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
       formData.append("location", location);
       formData.append("price", price);
 
-      const response = await axios.post("https://vinted-reacteur.herokuapp.com/offer/publish", formData, {
+      const response = await axios.post(`${server}offer/publish`, formData, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -46,6 +47,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
     }
   };
 
+  // Check if user is logged and has token
   const checkLogin = () => {
     if (!token) {
       <Login setUser={setUser} setLoginModal={setLoginModal} setSignupModal={setSignupModal} currentPage={currentPage} />;
@@ -67,6 +69,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
             <form onSubmit={handleSubmit}>
               <div className="publish-wrapper">
                 <div className="dashed">
+                  {/* Preview the image dropped by the user -- drag'n drog to come  */}
                   {preview ? (
                     <div style={{ border: "none", width: "100%", height: "100%", display: "flex", justifyContent: "flex-start" }}>
                       <img src={preview} alt="your picture" style={{ height: 190, width: 150 }} />
@@ -203,6 +206,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
             </form>
           </>
         ) : (
+          // User can choose between go back to home page or check his offer after submit
           <div className="after-submit">
             <div>
               <h3>Ton offre a bien été créée</h3>

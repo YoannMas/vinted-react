@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const Login = ({ setUser, setLoginModal, setSignupModal, currentPage }) => {
+const Login = ({ setUser, setLoginModal, setSignupModal, currentPage, server }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -13,13 +13,13 @@ const Login = ({ setUser, setLoginModal, setSignupModal, currentPage }) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post("https://vinted-reacteur.herokuapp.com/user/login", {
+      const response = await axios.post(`${server}user/login`, {
         email: email,
         password: password,
       });
       setUser(response.data.token);
+      // If succeed, close the modal
       setLoginModal(false);
-      history.push(`/${currentPage}`);
     } catch (error) {
       console.log(error.message);
       setErrorMessage("Username or password is invalid");
@@ -34,6 +34,7 @@ const Login = ({ setUser, setLoginModal, setSignupModal, currentPage }) => {
       <div className="signup-login">
         <span
           onClick={() => {
+            // If user close the modal on Publish or Payment, redirect to former page
             if (currentPage === "Publish" || currentPage === "Payment") {
               history.goBack();
               setLoginModal(false);
@@ -65,6 +66,7 @@ const Login = ({ setUser, setLoginModal, setSignupModal, currentPage }) => {
           <button type="submit">Se connecter</button>
           <span style={{ fontSize: 12, color: "red", display: "flex", justifyContent: "center", marginBottom: 10 }}>{errorMessage}</span>
           <a
+            // If user want to create an account
             onClick={() => {
               setLoginModal(false);
               setSignupModal(true);

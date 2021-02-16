@@ -12,13 +12,21 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
 
 function App() {
+  // State for filters
   const [search, setSearch] = useState("");
   const [price, setPrice] = useState(true);
   const [range, setRange] = useState([0, 100]);
+  // State for userToken
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+  // State for modal (signup and login)
   const [signupModal, setSignupModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
+  // Define which page is the last to be visit
   const [currentPage, setCurrentPage] = useState("Home");
+  // const server = "http://localhost:3001/";
+  const server = "https://vinted-reacteur.herokuapp.com/";
+
+  // Handle userToken (create and remove)
   const setUser = (token) => {
     if (token) {
       Cookies.set("userToken", token, { expires: 7 });
@@ -46,6 +54,7 @@ function App() {
           setSignupModal={setSignupModal}
           loginModal={loginModal}
           setLoginModal={setLoginModal}
+          server={server}
         />
         <Switch>
           <Route path="/Offer/:id">
@@ -56,6 +65,7 @@ function App() {
               loginModal={loginModal}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
+              server={server}
             />
           </Route>
           <Route path="/Publish">
@@ -66,13 +76,14 @@ function App() {
               loginModal={loginModal}
               setCurrentPage={setCurrentPage}
               currentPage={currentPage}
+              server={server}
             />
           </Route>
           <Route path="/Payment">
-            <Payment setCurrentPage={setCurrentPage} />
+            <Payment setCurrentPage={setCurrentPage} server={server} />
           </Route>
           <Route path="/">
-            <Home search={search} price={price} range={range} setCurrentPage={setCurrentPage} />
+            <Home search={search} price={price} range={range} setCurrentPage={setCurrentPage} server={server} />
           </Route>
         </Switch>
       </Router>

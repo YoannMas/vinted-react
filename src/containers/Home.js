@@ -7,25 +7,27 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const Home = ({ search, price, range, setCurrentPage }) => {
+const Home = ({ search, price, range, setCurrentPage, server }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  // Intialization of queries
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   let sort = "price-asc";
 
+  // state price is a toggle defined by the button filter
   if (!price) {
     sort = "price-desc";
   }
-  // const numPages = Math.ceil(data.number / limit); // count the number of pages, adding buttons with pages number
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://vinted-reacteur.herokuapp.com/offers?page=${page}&title=${search}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&limit=${limit}`
+        `${server}offers?page=${page}&title=${search}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&limit=${limit}`
       );
       setData(response.data);
       setIsLoading(false);
+      // Change current page to Home
       setCurrentPage("Home");
     } catch (error) {
       console.log(error.message);
@@ -35,6 +37,7 @@ const Home = ({ search, price, range, setCurrentPage }) => {
     }
   };
 
+  // Recharge the component when filters change
   useEffect(() => {
     fetchData();
   }, [page, search, sort, range, limit]);
@@ -53,6 +56,7 @@ const Home = ({ search, price, range, setCurrentPage }) => {
       </div>
       <div className="container">
         <div className="select">
+          {/* Define the number of product in home page */}
           <span>Nombre de produits par page :</span>
           <select
             onChange={(event) => {
@@ -70,8 +74,8 @@ const Home = ({ search, price, range, setCurrentPage }) => {
           })}
         </div>
       </div>
+      {/* For changing page */}
       <div className="pages">
-        {/* to improve with number of page */}
         {page > 1 ? (
           <button
             onClick={() => {

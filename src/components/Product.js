@@ -5,6 +5,7 @@ const Product = ({ data }) => {
   return (
     <div className="product">
       <div className="user-infos">
+        {/* If user doesn't have avatar, create one */}
         {data.owner.account.avatar ? (
           <img className="profil-picture" src={data.owner.account.avatar.secure_url} alt="User's avatar" />
         ) : (
@@ -15,7 +16,7 @@ const Product = ({ data }) => {
         <span>{data.owner.account.username}</span>
       </div>
       <Link to={`/Offer/${data._id}`}>
-        <img src={data.product_image.secure_url} alt={`${data.product_name}`} />
+        {data.product_image && <img src={data.product_image.secure_url} alt={`${data.product_name}`} />}
       </Link>
       <div className="product-infos">
         <div>

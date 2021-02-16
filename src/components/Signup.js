@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const Signup = ({ setUser, setSignupModal, setLoginModal, currentPage }) => {
+const Signup = ({ setUser, setSignupModal, setLoginModal, currentPage, server }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -15,15 +15,15 @@ const Signup = ({ setUser, setSignupModal, setLoginModal, currentPage }) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post("https://vinted-reacteur.herokuapp.com/user/signup", {
+      const response = await axios.post(`${server}user/signup`, {
         username: username,
         email: email,
         phone: phone,
         password: password,
       });
       setUser(response.data.token);
+      // If succeed, clode the modal
       setSignupModal(false);
-      history.push("/");
     } catch (error) {
       console.log(error.message);
       setErrorMessage("There is something wrong, please try again");
@@ -38,6 +38,7 @@ const Signup = ({ setUser, setSignupModal, setLoginModal, currentPage }) => {
       <div className="signup-login">
         <span
           onClick={() => {
+            // If user try to close modal on Publish or Payment, redirect to former page
             if (currentPage === "Publish" || currentPage === "Payment") {
               history.goBack();
               setSignupModal(false);
@@ -93,6 +94,7 @@ const Signup = ({ setUser, setSignupModal, setLoginModal, currentPage }) => {
           <button type="submit">S'inscrire</button>
           <span style={{ fontSize: 12, color: "red", display: "flex", justifyContent: "center", marginBottom: 10 }}>{errorMessage}</span>
           <a
+            // If user has an account
             onClick={() => {
               setSignupModal(false);
               setLoginModal(true);

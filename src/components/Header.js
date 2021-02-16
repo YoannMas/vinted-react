@@ -18,13 +18,19 @@ const Header = ({
   setLoginModal,
   signupModal,
   setSignupModal,
+  server,
 }) => {
   const history = useHistory();
 
   return (
     <div className="header">
-      {signupModal && <Signup setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} currentPage={currentPage} />}
-      {loginModal && <Login setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} currentPage={currentPage} />}
+      {/* Modals for signup and login components */}
+      {signupModal && (
+        <Signup setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} currentPage={currentPage} server={server} />
+      )}
+      {loginModal && (
+        <Login setUser={setUser} setSignupModal={setSignupModal} setLoginModal={setLoginModal} currentPage={currentPage} server={server} />
+      )}
       <div className="container">
         <Link to="/">
           <img src={logo} alt="Vinted's logo" />
@@ -38,6 +44,7 @@ const Header = ({
               setSearch(event.target.value);
             }}
           ></input>
+          {/* Display switch and range only for the home page */}
           {currentPage === "Home" && (
             <div>
               <PriceSwitch setPrice={setPrice} />
@@ -45,6 +52,7 @@ const Header = ({
             </div>
           )}
         </div>
+        {/* Display a disconnect button if user is logged */}
         {!userToken ? (
           <div className="buttons">
             <button
