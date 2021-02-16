@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Login from "../components/Login";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, currentPage }) => {
   const [data, setData] = useState({});
@@ -17,7 +17,6 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const token = Cookies.get("userToken");
-  const history = useHistory();
 
   const handleSubmit = async (event) => {
     try {

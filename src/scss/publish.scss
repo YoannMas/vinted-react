@@ -133,6 +133,9 @@
       margin: 30px 0 40px 0;
       cursor: pointer;
       outline: none;
+      &:hover {
+        background-color: $vintedColorHovered;
+      }
     }
   }
 }
