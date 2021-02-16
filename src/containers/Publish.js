@@ -17,6 +17,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const token = Cookies.get("userToken");
+  const [preview, setPreview] = useState("");
 
   const handleSubmit = async (event) => {
     try {
@@ -66,24 +67,31 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
             <form onSubmit={handleSubmit}>
               <div className="publish-wrapper">
                 <div className="dashed">
-                  <div>
-                    <label for="pictures">
-                      <span>+</span>
-                      <span>Ajoute une photo</span>
-                    </label>
-                    <input
-                      type="file"
-                      id="pictures"
-                      onChange={(event) => {
-                        setFile(event.target.files[0]);
-                      }}
-                    />
-                  </div>
+                  {preview ? (
+                    <div style={{ border: "none", width: "100%", height: "100%", display: "flex", justifyContent: "flex-start" }}>
+                      <img src={preview} alt="your picture" style={{ height: 190, width: 150 }} />
+                    </div>
+                  ) : (
+                    <div>
+                      <label htmlFor="pictures">
+                        <span>+</span>
+                        <span>Ajoute une photo</span>
+                      </label>
+                      <input
+                        type="file"
+                        id="pictures"
+                        onChange={(event) => {
+                          setFile(event.target.files[0]);
+                          setPreview(URL.createObjectURL(event.target.files[0]));
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
               <div>
                 <div>
-                  <label for="title">Titre</label>
+                  <label htmlFor="title">Titre</label>
                   <input
                     type="text"
                     id="title"
@@ -95,7 +103,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
                   />
                 </div>
                 <div className="description-box">
-                  <label for="description">Décris ton article</label>
+                  <label htmlFor="description">Décris ton article</label>
                   <textarea
                     type="text"
                     id="description"
@@ -109,7 +117,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
               </div>
               <div>
                 <div>
-                  <label for="brand">Marque</label>
+                  <label htmlFor="brand">Marque</label>
                   <input
                     type="text"
                     id="brand"
@@ -121,7 +129,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
                   />
                 </div>
                 <div>
-                  <label for="size">Taille</label>
+                  <label htmlFor="size">Taille</label>
                   <input
                     type="text"
                     id="size"
@@ -133,7 +141,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
                   />
                 </div>
                 <div>
-                  <label for="color">Couleur</label>
+                  <label htmlFor="color">Couleur</label>
                   <input
                     type="text"
                     id="color"
@@ -145,7 +153,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
                   />
                 </div>
                 <div>
-                  <label for="condition">Etat</label>
+                  <label htmlFor="condition">Etat</label>
                   <input
                     type="text"
                     id="condition"
@@ -157,7 +165,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
                   />
                 </div>
                 <div>
-                  <label for="location">Lieu</label>
+                  <label htmlFor="location">Lieu</label>
                   <input
                     type="text"
                     id="location"
@@ -171,7 +179,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
               </div>
               <div>
                 <div>
-                  <label for="price">Prix</label>
+                  <label htmlFor="price">Prix</label>
                   <div className="price-checkbox">
                     <input
                       type="text"
@@ -184,7 +192,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
                     />
                     <div>
                       <input type="checkbox" id="swap" />
-                      <label for="swap">Je suis intéressé(e) par les échanges</label>
+                      <label htmlFor="swap">Je suis intéressé(e) par les échanges</label>
                     </div>
                   </div>
                 </div>

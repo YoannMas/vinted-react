@@ -94,6 +94,10 @@
             justify-content: center;
             cursor: pointer;
           }
+          &:hover {
+            border-color: $vintedColorHovered;
+            color: $vintedColorHovered;
+          }
         }
         input {
           display: none;
