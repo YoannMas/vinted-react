@@ -58,6 +58,11 @@
       font-size: 18px;
       border: none;
       border-radius: 5px;
+      cursor: pointer;
+      outline: none;
+      &:hover {
+        background-color: #09a561;
+      }
     }
   }
 }

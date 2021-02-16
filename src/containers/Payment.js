@@ -10,13 +10,13 @@ const stripeKey = loadStripe("pk_test_51ILS14CIE24WqIUs3fC9myejvfoqxsbuR6BLmnT2I
 
 const Payment = ({ setCurrentPage }) => {
   const location = useLocation();
-  const { title, price } = location.state;
+  const { title, price, userId } = location.state;
   console.log(location);
 
   return (
     <Elements stripe={stripeKey}>
       {setCurrentPage("Payment")}
-      <CheckoutForm title={title} price={price} />
+      <CheckoutForm title={title} price={price} userId={userId} />
     </Elements>
   );
 };

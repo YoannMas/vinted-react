@@ -72,7 +72,7 @@ const Offer = ({ setCurrentPage, loginModal, setLoginModal, setSignupModal, curr
             <button
               onClick={() => {
                 if (token) {
-                  history.push("/Payment", { title: data.product_name, price: data.product_price });
+                  history.push("/Payment", { title: data.product_name, price: data.product_price, userId: data.owner._id });
                 } else {
                   <Login setUser={setUser} setLoginModal={setLoginModal} setSignupModal={setSignupModal} currentPage={currentPage} />;
                   setLoginModal((loginModal) => !loginModal);

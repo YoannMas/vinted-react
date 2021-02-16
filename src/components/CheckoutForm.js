@@ -1,13 +1,40 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { useState } from "react";
 import axios from "axios";
 
-const CheckoutForm = ({ title, price }) => {
+const CheckoutForm = ({ title, price, userId }) => {
+  const [succeded, setSucceded] = useState("");
+  const stripe = useStripe();
+  const elements = useElements();
   const protectionFees = 0.4;
   const shippingFees = 0.8;
+  console.log(succeded);
+
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const CardElements = elements.getElement(CardElement);
+      const stripeResponse = await stripe.createToken(CardElements, {
+        userId: userId,
+      });
+      const stripeToken = stripeResponse.token.id;
+      const response = await axios.post("https://vinted-reacteur.herokuapp.com/pay", {
+        price: price,
+        title: title,
+        stripeToken: stripeToken,
+      });
+      console.log(response);
+      if (response.status === 200) {
+        setSucceded("Félicitation, paiement validé ! 🎉");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="checkoutform">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h4>Résumé de la commande</h4>
         <div className="payment-infos">
           <div>
