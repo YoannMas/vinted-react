@@ -7,7 +7,7 @@ import "react-multi-carousel/lib/styles.css";
 import Cookies from "js-cookie";
 import Login from "../components/Login";
 
-const Offer = ({ setCurrentPage, loginModal, setLoginModal, setSignupModal, currentPage, setUser, server }) => {
+const Offer = ({ setCurrentPage, setLoginModal, server }) => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -80,14 +80,7 @@ const Offer = ({ setCurrentPage, loginModal, setLoginModal, setSignupModal, curr
                 if (token) {
                   history.push("/Payment", { title: data.product_name, price: data.product_price });
                 } else {
-                  <Login
-                    setUser={setUser}
-                    setLoginModal={setLoginModal}
-                    setSignupModal={setSignupModal}
-                    currentPage={currentPage}
-                    server={server}
-                  />;
-                  setLoginModal((loginModal) => !loginModal);
+                  setLoginModal(true);
                 }
               }}
             >

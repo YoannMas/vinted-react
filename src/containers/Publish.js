@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import Login from "../components/Login";
 import { Link } from "react-router-dom";
 
-const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, currentPage, server }) => {
+const Publish = ({ setCurrentPage, setLoginModal, server }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   // State for data to send to server
@@ -50,8 +49,7 @@ const Publish = ({ setCurrentPage, setUser, setLoginModal, setSignupModal, curre
   // Check if user is logged and has token
   const checkLogin = () => {
     if (!token) {
-      <Login setUser={setUser} setLoginModal={setLoginModal} setSignupModal={setSignupModal} currentPage={currentPage} />;
-      setLoginModal((loginModal) => !loginModal);
+      setLoginModal(true);
     }
   };
 
