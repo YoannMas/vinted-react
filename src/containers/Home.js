@@ -1,11 +1,15 @@
 import Product from "../components/Product";
+import Loader from "../components/Loader";
 import hero from "../assets/img/Hero-picture.jpeg";
 import overlay from "../assets/img/overlay.svg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Home = ({ search, price, range, setCurrentPage, server }) => {
   const [data, setData] = useState({});
@@ -43,7 +47,7 @@ const Home = ({ search, price, range, setCurrentPage, server }) => {
   }, [page, search, sort, range, limit]);
 
   return isLoading ? (
-    <span>En cours de chargement</span>
+    <Loader />
   ) : (
     <div className="home">
       <div className="hero">
@@ -82,7 +86,10 @@ const Home = ({ search, price, range, setCurrentPage, server }) => {
               setPage(page - 1);
             }}
           >
-            <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: 20, marginRight: 20 }} />
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              style={{ fontSize: 20, marginRight: 20 }}
+            />
             Précedent
           </button>
         ) : (
@@ -97,7 +104,10 @@ const Home = ({ search, price, range, setCurrentPage, server }) => {
             }}
           >
             Suivant
-            <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: 20, marginLeft: 20 }} />
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              style={{ fontSize: 20, marginLeft: 20 }}
+            />
           </button>
         )}
       </div>

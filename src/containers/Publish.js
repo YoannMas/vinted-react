@@ -69,8 +69,20 @@ const Publish = ({ setCurrentPage, setLoginModal, server }) => {
                 <div className="dashed">
                   {/* Preview the image dropped by the user -- drag'n drog to come  */}
                   {preview ? (
-                    <div style={{ border: "none", width: "100%", height: "100%", display: "flex", justifyContent: "flex-start" }}>
-                      <img src={preview} alt="your picture" style={{ height: 190, width: 150 }} />
+                    <div
+                      style={{
+                        border: "none",
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        justifyContent: "flex-start",
+                      }}
+                    >
+                      <img
+                        src={preview}
+                        alt="your picture"
+                        style={{ height: 190, width: 150 }}
+                      />
                     </div>
                   ) : (
                     <div>
@@ -83,7 +95,9 @@ const Publish = ({ setCurrentPage, setLoginModal, server }) => {
                         id="pictures"
                         onChange={(event) => {
                           setFile(event.target.files[0]);
-                          setPreview(URL.createObjectURL(event.target.files[0]));
+                          setPreview(
+                            URL.createObjectURL(event.target.files[0])
+                          );
                         }}
                       />
                     </div>
@@ -193,7 +207,9 @@ const Publish = ({ setCurrentPage, setLoginModal, server }) => {
                     />
                     <div>
                       <input type="checkbox" id="swap" />
-                      <label htmlFor="swap">Je suis intéressé(e) par les échanges</label>
+                      <label htmlFor="swap">
+                        Je suis intéressé(e) par les échanges
+                      </label>
                     </div>
                   </div>
                 </div>

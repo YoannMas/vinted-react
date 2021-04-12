@@ -5,7 +5,7 @@ import ProductDetails from "../components/ProductDetails";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Cookies from "js-cookie";
-import Login from "../components/Login";
+import Loader from "../components/Loader";
 
 const Offer = ({ setCurrentPage, setLoginModal, server }) => {
   const { id } = useParams();
@@ -42,7 +42,7 @@ const Offer = ({ setCurrentPage, setLoginModal, server }) => {
   };
 
   return isLoading ? (
-    <span>Chargement en cours...</span>
+    <Loader />
   ) : (
     <div className="offer">
       <div className="wrapper-offer">
@@ -66,10 +66,16 @@ const Offer = ({ setCurrentPage, setLoginModal, server }) => {
             <div>
               {/* If owner hasn't avatar, create a fake avatar with the first letter of username in uppercase in a circle */}
               {data.owner.account.avatar ? (
-                <img className="profil-picture" src={data.owner.account.avatar.secure_url} alt="User's avatar" />
+                <img
+                  className="profil-picture"
+                  src={data.owner.account.avatar.secure_url}
+                  alt="User's avatar"
+                />
               ) : (
                 <div style={{ marginRight: 10 }} className="userpic">
-                  <span style={{ color: "#fff", fontSize: 20 }}>{data.owner.account.username.substring(0, 1).toUpperCase()}</span>
+                  <span style={{ color: "#fff", fontSize: 20 }}>
+                    {data.owner.account.username.substring(0, 1).toUpperCase()}
+                  </span>
                 </div>
               )}
               <span>{data.owner.account.username}</span>
@@ -78,7 +84,10 @@ const Offer = ({ setCurrentPage, setLoginModal, server }) => {
               // Check if user has a token
               onClick={() => {
                 if (token) {
-                  history.push("/Payment", { title: data.product_name, price: data.product_price });
+                  history.push("/Payment", {
+                    title: data.product_name,
+                    price: data.product_price,
+                  });
                 } else {
                   setLoginModal(true);
                 }
