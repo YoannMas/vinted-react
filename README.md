@@ -40,7 +40,7 @@ Buy an item
 Clone this repository 
 
 ```
-git clone https://github.com/YoannMas/deliveroo-front-redux.git
+git clone https://github.com/YoannMas/vinted-react.git
 ```
 
 Install dependencies
