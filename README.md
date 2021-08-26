@@ -55,7 +55,7 @@ yarn start
 ```
 ## Payment informations
 
-If you want to buy an item, please use those payment informations (provide by Stripe):
+If you want to buy an item, please use those payment informations (provided by Stripe):
 - Numéro de carte : 4242 4242 4242 4242
 - MM/AA : 04 / 24
 - CCV : 424
