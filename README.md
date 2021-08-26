@@ -5,7 +5,6 @@
 
 This Reactjs project is a copy of Vinted web site. The user can filter offers, publish new offer and buy items.
 <br/>
-<a href="https://vinted-yoann.netlify.app/">Netlify deploy</a> - <a href="https://github.com/YoannMas/vinted-API">Backend repository</a> 
 </div>
 
 ## Screenshots
